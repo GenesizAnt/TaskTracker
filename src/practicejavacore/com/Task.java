@@ -2,8 +2,8 @@ package practicejavacore.com;
 
 public class Task {
 
-    private String nameTask;
-    private String descriptionTask;
+    public String nameTask;
+    public String descriptionTask;
     private StatusTask statusTask;
     protected static int idGlobal = 1;
     private final int id;
@@ -15,11 +15,15 @@ public class Task {
         this.id = idGlobal++;
     }
 
-//    public Task() {
+    public Task() {
+        this.id = idGlobal++;
+    }
+
+    //    public Task() {
 //        this.id = idGlobal++;
 //    }
     public String getNameTask() {
-        return nameTask;
+        return this.nameTask;
     }
 
     public String getDescriptionTask() {
@@ -48,6 +52,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "это обычный таск" + getNameTask();
+        return "это обычный таск - " + getNameTask();
     }
 }

@@ -6,24 +6,25 @@ import java.util.List;
 public class EpicTask extends Task {
 
     private StatusTask statusTask;
-    private List<SubTask> statusTasks = new ArrayList<>();
+    private List<SubTask> subTasks = new ArrayList<>();
     private SubTask subTask;
     private final int id;
 
 
     public EpicTask(String nameTask, String descriptionTask) {
-        super(nameTask, descriptionTask);
+        this.nameTask = nameTask;
+        this.descriptionTask = descriptionTask;
         this.id = idGlobal++;
         statusTask = StatusTask.NEW;
     }
 
     public void addNewSubTask(SubTask subTask) {
-        statusTasks.add(subTask);
+        subTasks.add(subTask);
     }
 
     @Override
     public String getNameTask() {
-        return super.getNameTask();
+        return this.nameTask;
     }
 
 
@@ -31,11 +32,6 @@ public class EpicTask extends Task {
     public StatusTask getStatusTask() {
         return statusTask;
     }
-
-    public void setSubTask(SubTask subTask) {
-        this.subTask = subTask;
-    }
-
 
     public void setStatusTask(StatusTask statusTask) {
         this.statusTask = statusTask;
@@ -46,12 +42,21 @@ public class EpicTask extends Task {
         return id;
     }
 
+    public SubTask getSubTaskByID(int id) {
+        return subTasks.get(id);
+    }
+
+    private String viewSubTask() {
+        StringBuilder viewSubTask = new StringBuilder(" \n");
+        for (SubTask task : subTasks) {
+            viewSubTask.append((task));
+        }
+        return viewSubTask.toString();
+    }
+
     @Override
     public String toString() {
-        System.out.println("это супертаск " + getNameTask());
-        for (SubTask task : statusTasks) {
-            System.out.println(task);
-        }
-        return "";
+        return "это супертаск - " + getNameTask() + viewSubTask();
+
     }
 }

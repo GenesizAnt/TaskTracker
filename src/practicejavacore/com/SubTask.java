@@ -4,20 +4,21 @@ public class SubTask extends Task {
 
     private StatusTask statusTask;
     private final int id;
-    private final int idEpicTask;
+    private EpicTask epicTask;
 
 
-    public SubTask(String nameTask, String descriptionTask, int idEpicTask) {
-        super(nameTask, descriptionTask);
-        this.idEpicTask = idEpicTask;
+    public SubTask(String nameTask, String descriptionTask, EpicTask epicTask) {
+        this.nameTask = nameTask;
+        this.descriptionTask = descriptionTask;
+        this.epicTask = epicTask;
+        this.epicTask.addNewSubTask(this);
         this.statusTask = StatusTask.NEW;
         this.id = idGlobal++;
     }
 
-
     @Override
     public String getNameTask() {
-        return super.getNameTask();
+        return this.nameTask;
     }
 
     @Override
@@ -35,12 +36,12 @@ public class SubTask extends Task {
         return id;
     }
 
-    public int getIdEpicTask() {
-        return idEpicTask;
+    public EpicTask getEpicTask() {
+        return epicTask;
     }
 
     @Override
     public String toString() {
-        return "это подтаск" + getNameTask();
+        return "это подтаск задачи - " + epicTask.getNameTask() + " Название сабтаска: " + getNameTask() + "; ";
     }
 }
