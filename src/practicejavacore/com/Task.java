@@ -19,9 +19,6 @@ public class Task {
         this.id = idGlobal++;
     }
 
-    //    public Task() {
-//        this.id = idGlobal++;
-//    }
     public String getNameTask() {
         return this.nameTask;
     }

@@ -22,6 +22,10 @@ public class EpicTask extends Task {
         subTasks.add(subTask);
     }
 
+    public List<SubTask> getSubTasks() {
+        return subTasks;
+    }
+
     @Override
     public String getNameTask() {
         return this.nameTask;
@@ -46,17 +50,9 @@ public class EpicTask extends Task {
         return subTasks.get(id);
     }
 
-    private String viewSubTask() {
-        StringBuilder viewSubTask = new StringBuilder(" \n");
-        for (SubTask task : subTasks) {
-            viewSubTask.append((task));
-        }
-        return viewSubTask.toString();
-    }
-
     @Override
     public String toString() {
-        return "это супертаск - " + getNameTask() + viewSubTask();
+        return "это супертаск - " + getNameTask();
 
     }
 }

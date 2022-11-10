@@ -1,8 +1,13 @@
 package practicejavacore.com;
 
 public enum StatusTask {
+    NEW(1), IN_PROGRESS(2), DONE(0);
 
-    NEW, IN_PROGRESS, DONE;
+    private int statusID;
+
+    StatusTask(int statusID) {
+        this.statusID = statusID;
+    }
 
     public void getDescribeStatusTask(StatusTask statusTask) {
         switch (statusTask){
@@ -12,4 +17,7 @@ public enum StatusTask {
         }
     }
 
+    public int getStatusID() {
+        return statusID;
+    }
 }
