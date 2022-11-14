@@ -1,7 +1,10 @@
 package practicejavacore.com;
+import static practicejavacore.com.InMemoryTaskManager.idGlobal;
 
-public class SubTask extends Task {
+public class SubTask implements Taskable {
 
+    private String nameTask;
+    private String descriptionTask;
     private StatusTask statusTask;
     private final int id;
     private EpicTask epicTask;
@@ -21,23 +24,34 @@ public class SubTask extends Task {
         return this.nameTask;
     }
 
-    @Override
     public StatusTask getStatusTask() {
         return statusTask;
     }
 
-    @Override
     public void setStatusTask(StatusTask statusTask) {
         this.statusTask = statusTask;
     }
 
-    @Override
     public int getId() {
         return id;
     }
 
     public EpicTask getEpicTask() {
         return epicTask;
+    }
+
+    @Override
+    public void setNameTask(String nameTask) {
+        this.nameTask = nameTask;
+    }
+
+    @Override
+    public void setDescriptionTask(String descriptionTask) {
+        this.descriptionTask = descriptionTask;
+    }
+
+    public void setEpicTask(EpicTask epicTask) {
+        this.epicTask = epicTask;
     }
 
     @Override

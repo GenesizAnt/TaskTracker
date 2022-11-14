@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        ManagerTask managerTask = new ManagerTask();
+        InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager();
         System.out.println("Привет! Это Просто менеджер задач, давай начнем работу!");
 
         while (true) {

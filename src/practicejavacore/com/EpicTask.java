@@ -2,9 +2,12 @@ package practicejavacore.com;
 
 import java.util.ArrayList;
 import java.util.List;
+import static practicejavacore.com.InMemoryTaskManager.idGlobal;
 
-public class EpicTask extends Task {
+public class EpicTask implements Taskable {
 
+    private String nameTask;
+    private String descriptionTask;
     private StatusTask statusTask;
     private List<SubTask> subTasks = new ArrayList<>();
     private SubTask subTask;
@@ -32,7 +35,6 @@ public class EpicTask extends Task {
     }
 
 
-    @Override
     public StatusTask getStatusTask() {
         return statusTask;
     }
@@ -41,7 +43,6 @@ public class EpicTask extends Task {
         this.statusTask = statusTask;
     }
 
-    @Override
     public int getId() {
         return id;
     }
@@ -51,8 +52,17 @@ public class EpicTask extends Task {
     }
 
     @Override
+    public void setNameTask(String nameTask) {
+        this.nameTask = nameTask;
+    }
+
+    @Override
+    public void setDescriptionTask(String descriptionTask) {
+        this.descriptionTask = descriptionTask;
+    }
+
+    @Override
     public String toString() {
         return "это супертаск - " + getNameTask();
-
     }
 }

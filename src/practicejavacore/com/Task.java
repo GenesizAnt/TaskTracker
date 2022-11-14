@@ -1,11 +1,11 @@
 package practicejavacore.com;
 
-public class Task {
+import static practicejavacore.com.InMemoryTaskManager.idGlobal;
+public class Task implements Taskable {
 
-    public String nameTask;
-    public String descriptionTask;
+    private String nameTask;
+    private String descriptionTask;
     private StatusTask statusTask;
-    protected static int idGlobal = 1;
     private final int id;
 
     public Task(String nameTask, String descriptionTask) {
