@@ -1,66 +1,96 @@
 package practicejavacore.com;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+
+import java.util.*;
 
 public class InMemoryTaskManager implements ManagerTask {
 
     static int idGlobal = 1;
 
     private List<Taskable> allTaskList = new ArrayList<>();
-    private HashMap<Integer, Task> taskList = new HashMap<>();
-    private HashMap<Integer, EpicTask> epicTaskList = new HashMap<>();
-    private HashMap<Integer, SubTask> subTaskList = new HashMap<>();
+    private HashMap<String, Task> taskList = new HashMap<>();
+    private HashMap<String, EpicTask> epicTaskList = new HashMap<>();
+    private HashMap<String, SubTask> subTaskList = new HashMap<>();
+    List<String> listNameHistory = new ArrayList<>();
+
 
     public List<Taskable> lastViewTask() {
+        List<Taskable> listTask = new ArrayList<>();
+        for (String s : listNameHistory) {
+            for (int j = 0; j < taskList.size(); j++) {
+                if (taskList.containsKey(s)) {
+                    listTask.add(taskList.get(s));
+                }
+            }
+            for (int j = 0; j < epicTaskList.size(); j++) {
+                if (epicTaskList.containsKey(s)) {
+                    listTask.add(epicTaskList.get(s));
+                }
+            }
+            for (int j = 0; j < subTaskList.size(); j++) {
+                if (subTaskList.containsKey(s)) {
+                    listTask.add(subTaskList.get(s));
+                }
+            }
+        }
+        return listTask;
+    }
 
+    public void historyAdd(String name) {
+        if (listNameHistory.size() < 10) {
+            listNameHistory.add(name);
+        } else {
+            listNameHistory.set(0, name);
+        }
 
+    }
 
-        return null;
+    public void getTask(String name) {
+        taskList.get(name);
+        historyAdd(name);
     }
 
     public void addTask() {
-        System.out.println("Какую задачу Вы хотите добавить?\n" +
-                "1 - Обычная задача\n" +
-                "2 - Большая задача\n" +
-                "3 - Подзадача для большой задачи");
+        System.out.println("""
+                Какую задачу Вы хотите добавить?
+                1 - Обычная задача
+                2 - Большая задача
+                3 - Подзадача для большой задачи""");
         Scanner scanner = new Scanner(System.in);
         int choose = scanner.nextInt();
         switch (choose) {
-            case 1: {
+            case 1 -> {
                 System.out.println("Введите наименование задачи");
                 String name = scanner.next();
                 System.out.println("Введите описание задачи");
                 String description = scanner.next();
                 Task task = new Task(name, description);
-                taskList.put(task.getId(), task);
+                taskList.put(name, task);
                 System.out.println("Задача " + name + " добавлена");
-                break;
             }
-            case 2: {
+            case 2 -> {
                 System.out.println("Введите наименование большой задачи");
                 String name = scanner.next();
                 System.out.println("Введите описание задачи");
                 String description = scanner.next();
-                epicTaskList.put(name, description);
+                EpicTask epicTask = new EpicTask(name, description);
+                epicTaskList.put(name, epicTask);
                 System.out.println("Задача " + name + " добавлена");
-                break;
             }
-            case 3: {
+            case 3 -> {
                 System.out.println("Введите наименование большой задачи для добавления");
                 String nameEpicTask = scanner.next();
                 System.out.println("Введите наименование подзадачи");
                 String name = scanner.next();
                 System.out.println("Введите описание задачи");
                 String description = scanner.next();
-                subTaskList.put(name, description);
+                SubTask subTask = new SubTask(nameEpicTask, description, epicTaskList.get(nameEpicTask));
+                subTaskList.put(name, subTask);
+                System.out.println("Задача " + name + " добавлена");
             }
             default -> System.out.println("Такого типа задач нет");
         }
 
     }
-
 
 
     public void addTaskInManager(Taskable task) {

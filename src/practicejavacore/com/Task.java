@@ -49,6 +49,6 @@ public class Task implements Taskable {
 
     @Override
     public String toString() {
-        return "это обычный таск - " + getNameTask();
+        return "это обычный таск - " + getNameTask() + " " + id;
     }
 }
