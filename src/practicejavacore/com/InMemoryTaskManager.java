@@ -4,6 +4,8 @@ import java.util.*;
 
 public class InMemoryTaskManager implements ManagerTask {
 
+    HistoryManager historyManager = Manager.getDefaultHistory();
+
     static int idGlobal = 1;
 
     private List<Taskable> allTaskList = new ArrayList<>();
@@ -11,6 +13,8 @@ public class InMemoryTaskManager implements ManagerTask {
     private HashMap<String, EpicTask> epicTaskList = new HashMap<>();
     private HashMap<String, SubTask> subTaskList = new HashMap<>();
     List<String> listNameHistory = new ArrayList<>();
+
+
 
 
     public List<Taskable> lastViewTask() {
@@ -45,8 +49,7 @@ public class InMemoryTaskManager implements ManagerTask {
     }
 
     public void getTask(String name) {
-        taskList.get(name);
-        historyAdd(name);
+        historyManager.add(taskList.get(name));
     }
 
     public void addTask() {
@@ -123,7 +126,7 @@ public class InMemoryTaskManager implements ManagerTask {
     }
 
     public void getTaskByID(int id) {
-        if (idGlobal <= 0) {
+        if (id <= 0) {
             System.out.println("Таких задач не бывет, ID начинаются с 1");
         } else if (id > idGlobal) {
             System.out.println("Такую задачу еще не создали");
@@ -131,6 +134,7 @@ public class InMemoryTaskManager implements ManagerTask {
             for (Taskable task : allTaskList) {
                 if (task.getId() == id) {
                     System.out.println(task);
+                    historyManager.add(task);
                     break;
                 }
             }
@@ -298,5 +302,9 @@ public class InMemoryTaskManager implements ManagerTask {
             }
         }
 
+    }
+
+    public HistoryManager getHistoryManager() {
+        return historyManager;
     }
 }

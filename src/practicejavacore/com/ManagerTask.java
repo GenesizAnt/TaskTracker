@@ -30,4 +30,6 @@ public interface ManagerTask {
 
     void viewTaskByType(int varType);
 
+    HistoryManager getHistoryManager();
+
 }

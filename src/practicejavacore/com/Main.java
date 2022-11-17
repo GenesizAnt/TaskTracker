@@ -1,14 +1,13 @@
 package practicejavacore.com;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
-        HistoryManager historyManager = new HistoryManager();
+//        HistoryManager historyManager = new HistoryManager();
+
+        ManagerTask taskManager = Manager.getDefault();
+        HistoryManager historyManager = Manager.getDefaultHistory();
+
 
         Task task1 = new Task("Task1", "DTask1");
         Task task2 = new Task("Task2", "DTask2");
@@ -22,24 +21,53 @@ public class Main {
         Task task10 = new Task("Task10", "DTask10");
         Task task11 = new Task("Task11", "DTask11");
         Task task12 = new Task("Task12", "DTask12");
-//        Task task13 = new Task("Task13", "DTask13");
-//        Task task14 = new Task("Task14", "DTask14");
+        Task task13 = new Task("Task13", "DTask13");
+        Task task14 = new Task("Task14", "DTask14");
 
-        historyManager.historyAdd(task1);
-        historyManager.historyAdd(task2);
-        historyManager.historyAdd(task3);
-        historyManager.historyAdd(task4);
-        historyManager.historyAdd(task5);
-        historyManager.historyAdd(task6);
-        historyManager.historyAdd(task7);
-        historyManager.historyAdd(task8);
-        historyManager.historyAdd(task9);
-        historyManager.historyAdd(task10);
-        historyManager.historyAdd(task11);
-        historyManager.historyAdd(task12);
-//        historyManager.historyAdd(task13);
-//        historyManager.historyAdd(task14);
-        historyManager.history();
+
+        taskManager.addTaskInManager(task1);
+        taskManager.addTaskInManager(task2);
+        taskManager.addTaskInManager(task3);
+        taskManager.addTaskInManager(task4);
+        taskManager.addTaskInManager(task5);
+        taskManager.addTaskInManager(task6);
+        taskManager.addTaskInManager(task7);
+        taskManager.addTaskInManager(task8);
+        taskManager.addTaskInManager(task9);
+        taskManager.addTaskInManager(task10);
+        taskManager.addTaskInManager(task11);
+        taskManager.addTaskInManager(task12);
+        taskManager.addTaskInManager(task13);
+        taskManager.addTaskInManager(task14);
+        taskManager.getTaskByID(1);
+        taskManager.getTaskByID(2);
+        taskManager.getTaskByID(3);
+        taskManager.getTaskByID(4);
+        taskManager.getTaskByID(5);
+        taskManager.getTaskByID(6);
+        taskManager.getTaskByID(7);
+        taskManager.getTaskByID(8);
+        taskManager.getTaskByID(9);
+        taskManager.getTaskByID(10);
+        taskManager.getTaskByID(11);
+        taskManager.getTaskByID(12);
+
+
+//        historyManager.add(task1);
+//        historyManager.add(task2);
+//        historyManager.add(task3);
+//        historyManager.add(task4);
+//        historyManager.add(task5);
+//        historyManager.add(task6);
+//        historyManager.add(task7);
+//        historyManager.add(task8);
+//        historyManager.add(task9);
+//        historyManager.add(task10);
+//        historyManager.add(task11);
+//        historyManager.add(task12);
+//        historyManager.add(task13);
+//        historyManager.add(task14);
+        taskManager.getHistoryManager().getHistory();
 
 //        InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager();
 //        System.out.println("Привет! Это Просто менеджер задач, давай начнем работу!");
