@@ -133,7 +133,7 @@ public class InMemoryTaskManager implements ManagerTask {
         } else {
             for (Taskable task : allTaskList) {
                 if (task.getId() == id) {
-                    System.out.println(task);
+//                    System.out.println(task);
                     historyManager.add(task);
                     break;
                 }

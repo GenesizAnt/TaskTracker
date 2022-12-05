@@ -3,8 +3,6 @@ package practicejavacore.com;
 public class Main {
     public static void main(String[] args) {
 
-//        HistoryManager historyManager = new HistoryManager();
-
         ManagerTask taskManager = Manager.getDefault();
         HistoryManager historyManager = Manager.getDefaultHistory();
 
@@ -52,32 +50,14 @@ public class Main {
         taskManager.getTaskByID(11);
         taskManager.getTaskByID(12);
 
+//        taskManager.getHistoryManager().remove(10);
+//        taskManager.getHistoryManager().getTask();
+        System.out.println(taskManager.getHistoryManager().getHistory());
 
-//        historyManager.add(task1);
-//        historyManager.add(task2);
-//        historyManager.add(task3);
-//        historyManager.add(task4);
-//        historyManager.add(task5);
-//        historyManager.add(task6);
-//        historyManager.add(task7);
-//        historyManager.add(task8);
-//        historyManager.add(task9);
-//        historyManager.add(task10);
-//        historyManager.add(task11);
-//        historyManager.add(task12);
-//        historyManager.add(task13);
-//        historyManager.add(task14);
-        taskManager.getHistoryManager().getHistory();
-
-//        InMemoryTaskManager inMemoryTaskManager = new InMemoryTaskManager();
-//        System.out.println("Привет! Это Просто менеджер задач, давай начнем работу!");
-//
-//        while (true) {
-//            printMenu();
-//            Scanner scanner = new Scanner(System.in);
-//            int choose = scanner.nextInt();
-//            break;
+//        for (int i = 0; i < taskManager.getHistoryManager().getHistory().size(); i++) {
+//            System.out.println(taskManager.getHistoryManager().getHistory().get(i));
 //        }
+
 
     }
 
